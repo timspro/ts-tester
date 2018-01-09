@@ -13,9 +13,9 @@ module.exports = function(filter, fixing) {
   fixing  = fixing  || (process && process.env ? process.env.FIXING : false)
   var fixing_index
   if(fixing) {
-    if(!filter) throw 'must specify exact test group (* allowed) to fix via TESTS environment variable'
-    if(filter.indexOf(',') >= 0) throw "can't specify multiple test groups when fixing (although * is allowed)"
-    if(filter.indexOf('#') >= 0) throw "can't specify a individual test; must do the whole group when fixing"
+    if(!filter) throw 'must specify exact test group (* allowed) via FILTER when FIXING used'
+    if(filter.indexOf(',') >= 0) throw "can't specify multiple test groups when FIXING (although * is allowed)"
+    if(filter.indexOf('#') >= 0) throw "can't specify a individual test; must do the whole group when FIXING"
     fixing = filter.split('.')
     fixing_index = 0
   }

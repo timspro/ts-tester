@@ -11,9 +11,9 @@ sample test file:
 ```
 let tester = require('ts-tester')
 let filter = <string>, fixing = <boolean>
-let runner = tester(filter, fixing)
+let testing = tester(filter, fixing)
 let input = <array>, output = <array>, test = <function> 
-runner.run({
+testing.run({
   input,
   output,
   test
@@ -23,8 +23,8 @@ runner.run({
 OR more commonly (since filter and fixing are usually provided via command line if at all):
 
 ```
-let runner = require('ts-tester')()
-runner.run({
+let testing = require('ts-tester')()
+testing.run({
   input: [...],
   output: [...],
   test: (param1, param2, ...) => {
@@ -36,7 +36,7 @@ runner.run({
 
 Put either one of the above into a file that can be named whatever you want although be sure
 to add code where there is <> or ... . Then you can run the file by calling node directly
-on the file i.e. `node tests.js` or `TESTS=... tests.js` or `FIXING=1 TESTS=... tests.js`.
+on the file i.e. `node tests.js` or `FILTER=... tests.js` or `FIXING=1 FILTER=... tests.js`.
 
 what it do:
 
@@ -45,7 +45,7 @@ array of arguments to the test function also provided. These will then be checke
 to see if they are same. If not then an error will be shown in the console. For example,
 
 ```
-runner.run({
+testing.run({
   group1: {
     input: ['1', '2', '3'],
     output: [1, 2, 3],
@@ -57,7 +57,7 @@ runner.run({
 is a valid test that will pass. However,
 
 ```
-runner.run({
+testing.run({
   group1: {
     input: ['1', '2', '3'],
     output: ['blah', 'red', 'blue'],
@@ -71,7 +71,7 @@ will not. Elsewhere in the documentation the object that is set to group1 is cal
 Tests can also be nested and child test groups will inherit the defined keywords in the parent tests. For example,
 
 ```
-runner.run({
+testing.run({
   group1: {
     input: ['1', '2', '3'],
     test: parseInt,
@@ -105,7 +105,7 @@ For this to work correctly, you need to indent the line one indentation below th
 is defined. For example,
 
 ```
-runner.run({
+testing.run({
   group1: {
     input: ['1', '2', '3'],
     output: [],
@@ -117,7 +117,7 @@ runner.run({
 works but the following is bad:
 
 ```
-runner.run({
+testing.run({
   group1: {
   input: ['1', '2', '3'],
   output: [],
@@ -125,3 +125,5 @@ runner.run({
   }
 })
 ```
+
+NOTE THAT YOU SHOULDNT MIX TAB AND SPACES WHEN USING THIS!
