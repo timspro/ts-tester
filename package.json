@@ -1,0 +1,13 @@
+{
+  name: 'ts-tester',
+  version: '0.0.0',
+  description: 'testing library',
+  main: 'tester.js',
+  repository: '',
+  author: 'Tim Sprowl <timspro@users.noreply.github.com>',
+  dependencies: {},
+  engines: {
+    node: '>=6.11.2',
+    npm: '>=3.10.10'
+  }
+}
